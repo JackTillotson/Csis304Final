@@ -1,0 +1,11 @@
+body {
+    font-family: "SF UI Display", "Segoe UI", "Roboto", "Ubuntu", "Helvetica", "Arial", sans-serif;
+}
+
+h1, h2, h3 {
+    font-weight: lighter;
+}
+
+textarea#rawData {
+    font-family: "Menlo", "Consolas", "Ubuntu Mono", "Courier New", monospace;
+}

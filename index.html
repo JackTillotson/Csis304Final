@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather Finder</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="Final.js"></script>
+    <link rel="stylesheet" href="Final.css" />
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+</head>
+<body>
+<h1>Weather Finder</h1>
+
+<h2>Query</h2>
+<input type="text" id="keywords" />
+<input type="button" onclick="query();" value="Search Weather" />
+
+<h2>Response</h2>
+<textarea id="rawData" rows="10" cols="80"></textarea>
+
+<h2>Results</h2>
+<div id="results">
+</div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</body>
+</html>
