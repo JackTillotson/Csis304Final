@@ -4,24 +4,67 @@
     <title>Weather Finder</title>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="Final.js"></script>
+    <script type="text/javascript" src="toggle_visible.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.js"></script>
+    <link rel="stylesheet" href="https://s.yimg.com/zz/combo?os/yc/css/custom.44aba1a8.css&amp;os/yc/css/bundle.ce149847.css&amp;os/yc/css/atomic-desktop-ltr.c0cdb800.css&amp;os/yc/css/atomic-context.76bb529b.css&amp;os/yc/css/patch.cd698090.css&amp;os/yc/css/theme.8221cb62.css&amp;os/fuji-style/css/fuji-rollup.min.e15bf8b3.css&amp;os/yc/css/content-canvas.67e84b7e.css"/>
     <link rel="stylesheet" href="Final.css" />
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+
 </head>
 <body>
-<h1>Weather Finder</h1>
+<h1>Weather Comparison
+    <input type="button" onclick="makeVisible();" value="Compare!" />
+    <input type="button" onclick="makeInvisible();" value="Hide" />
+</h1>
 
-<h2>Query</h2>
-<input type="text" id="keywords" />
-<input type="button" onclick="query();" value="Search Weather" />
+<div class="leftSide" id="leftSideDiv">
+    <h2>Query First Location</h2>
+    <input type="text" id="keywords" />
+    <input type="button" onclick="query();" value="Search Weather" />
 
-<h2>Response</h2>
-<textarea id="rawData" rows="10" cols="80"></textarea>
+    <h2>Response</h2>
+    <textarea id="rawData" rows="10" cols="50"></textarea>
 
-<h2>Results</h2>
-<div id="results">
+    <h3>Results</h3>
+    <br />
+    <table1>
+        <tr>
+            <th> | Day | </th>
+            <th> | High | </th>
+            <th> | Low | </th>
+            <th> | Weather | </th>
+        </tr>
+    </table1>
+    <br />
+    <div id="results">
+
+    </div>
+    <canvas id="myChart" width="150" height="150"></canvas>
+</div>
+
+<div class="rightSide" id="rightSideDiv">
+    <h2>Query Second Location</h2>
+    <input type="text" id="keywords1" />
+    <input type="button" onclick="query1();" value="Search Weather" />
+
+    <h2>Response</h2>
+    <textarea id="rawData1" rows="10" cols="50"></textarea>
+
+    <h4>Results</h4>
+    <br />
+    <table1>
+        <tr>
+            <th> | Day | </th>
+            <th> | High | </th>
+            <th> | Low | </th>
+            <th> | Weather | </th>
+        </tr>
+    </table1>
+    <br />
+    <div id="results1">
+
+    </div>
+    <canvas id="myChart1" width="150" height="150"></canvas>
 </div>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </body>
 </html>

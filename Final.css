@@ -2,10 +2,41 @@ body {
     font-family: "SF UI Display", "Segoe UI", "Roboto", "Ubuntu", "Helvetica", "Arial", sans-serif;
 }
 
-h1, h2, h3 {
+h1 {
+    text-align: center;
+    font-size: x-large;
+}
+
+h1, h2, h3, h4 {
     font-weight: lighter;
 }
 
 textarea#rawData {
     font-family: "Menlo", "Consolas", "Ubuntu Mono", "Courier New", monospace;
+}
+
+textarea#rawData1 {
+    font-family: "Menlo", "Consolas", "Ubuntu Mono", "Courier New", monospace;
+}
+
+table, th, td {
+    border: solid 20px white;
+}
+
+table1, th, tr {
+    border: solid 10px white;
+}
+
+.rightSide {
+    visibility: hidden;
+    float: right;
+    align: top;
+}
+
+.leftSide {
+    float: left;
+}
+
+.middle {
+    align-self: center;
 }
