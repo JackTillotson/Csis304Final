@@ -28,7 +28,6 @@ table1, th, tr {
 }
 
 .rightSide {
-    visibility: hidden;
     float: right;
     align: top;
 }
