@@ -1,6 +1,9 @@
 /**
  * Created by jtillotson13 on 4/11/2017.
  */
+var globalTemp1;
+var globalTemp2;
+
 function query() {
 
     var url = "https://query.yahooapis.com/v1/public/yql?";
@@ -12,6 +15,7 @@ function query() {
 
     if (criteria.length > 0) {
         $("#results").empty();
+        $("#middleDiv").empty();
         $.getJSON(url,
             {
                 q: query,
@@ -21,6 +25,7 @@ function query() {
         ).done(function(data) {
             jsonChannel = data.query.results.channel;
             jsonForecast = jsonChannel.item.forecast;
+            //globalTemp1 =  jsonChannel.item.condition.temp;
             var days = [];
             var highTemp =[];
             var lowTemp =[];
@@ -43,7 +48,8 @@ function query() {
                 ).appendTo("#resultsTable");
             });
 
-            var ctx = document.getElementById("myChart");
+            var ctx = $("<canvas/>", {"id" : "myChart"}).width(150).height(100).appendTo("#results");
+            //var ctx = document.getElementById("myChart");
             var myChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
@@ -148,6 +154,7 @@ function query1() {
 
     if (criteria.length > 0) {
         $("#results1").empty();
+        $("#middleDiv").empty();
         $.getJSON(url,
             {
                 q: query,
@@ -157,6 +164,7 @@ function query1() {
         ).done(function (data) {
             jsonChannel = data.query.results.channel;
             jsonForecast = jsonChannel.item.forecast;
+            //globalTemp2 = jsonChannel.item.condition.temp;
             var days = [];
             var highTemp =[];
             var lowTemp =[];
@@ -179,7 +187,8 @@ function query1() {
                 ).appendTo("#resultsTable1");
             });
 
-            var ctx = document.getElementById("myChart1");
+            var ctx = $("<canvas/>", {"id" : "myChart1"}).width(150).height(100).appendTo("#results1");
+            //var ctx = document.getElementById("myChart1");
             var myChart1 = new Chart(ctx, {
                 type: 'bar',
                 data: {
@@ -265,6 +274,49 @@ function query1() {
 }
 
 
+function queryCompare() {
+    if ($("#keywords").val().length > 0 && $("#keywords1").val().length > 0) {
+        //$("#results1").empty();
+        //$("#results").empty();
+        $("#middleDiv").empty();
+
+        var ctx = $("<canvas/>", {"id": "myChart2"}).width(150).height(50).appendTo("#middleDiv");
+        //var ctx = document.getElementById("myChart1");
+        var myChart2 = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [$("#keywords").val(), $("#keywords1").val()],
+                datasets: [{
+                    label: ['Current Temperatures'],
+                    data: [globalTemp1, globalTemp2],
+                    backgroundColor: [
+                        'rgba(20, 150, 150, 0.6)',
+                        'rgba(20, 150, 150, 0.6)'
+                    ],
+                    borderColor: [
+                        'rgba(20, 200, 150, 1)',
+                        'rgba(20, 200, 150, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                            steps: 11,
+                            stepValue: 10,
+                            max: 110
+                        }
+                    }]
+                }
+            }
+        });
+    }
+}
+
 function query2() {
 
     var url = "https://query.yahooapis.com/v1/public/yql?";
@@ -276,6 +328,7 @@ function query2() {
 
     if (criteria.length > 0) {
         $("#results").empty();
+        $("#middleDiv").empty();
         $.getJSON(url,
             {
                 q: query,
@@ -285,6 +338,7 @@ function query2() {
         ).done(function (data) {
             jsonChannel = data.query.results.channel;
             jsonForecast = jsonChannel.item.forecast;
+            globalTemp1 = jsonChannel.item.condition.temp;
 
 
             $("#rawData").val(JSON.stringify(data));
@@ -313,6 +367,7 @@ function query3() {
 
     if (criteria.length > 0) {
         $("#results1").empty();
+        $("#middleDiv").empty();
         $.getJSON(url,
             {
                 q: query,
@@ -322,6 +377,7 @@ function query3() {
         ).done(function (data) {
             jsonChannel = data.query.results.channel;
             jsonForecast = jsonChannel.item.forecast;
+            globalTemp2 = jsonChannel.item.condition.temp;
 
 
             $("#rawData1").val(JSON.stringify(data));

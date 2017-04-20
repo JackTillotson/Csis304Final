@@ -27,6 +27,12 @@ table1, th, tr {
     border: solid 10px white;
 }
 
+.middle {
+    align-self: center;
+    height: 200px;
+    width: 200px;
+}
+
 .rightSide {
     float: right;
     align: top;

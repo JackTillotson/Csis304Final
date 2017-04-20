@@ -12,18 +12,21 @@
 </head>
 <body>
 <h1>Weather Comparison
-    <input type="button" onclick="makeVisible();" value="Compare!" />
+    <br />
+    <input type="button" onclick="makeVisible();" value="Compare" />
     <input type="button" onclick="makeInvisible();" value="Hide" />
+    <br />
+    <input type="button" onclick="query2();query3();queryCompare();" value="Compare Current Temp" />
 </h1>
+
+
 
 <div class="leftSide" id="leftSideDiv">
     <h2>Query First Location</h2>
     <input type="text" id="keywords" />
-    <input type="button" onclick="query();" value="Compare Forecast" />
-    <input type="button" onclick="query2();" value="Compare Current Conditions" />
+    <input type="button" onclick="query();" value="10 Day Forecast" />
+    <input type="button" onclick="query2();" value="Current Conditions" />
 
-    <h2>Response</h2>
-    <textarea id="rawData" rows="10" cols="50"></textarea>
 
     <h3>Results</h3>
     <br />
@@ -31,17 +34,15 @@
     <div id="results">
 
     </div>
-    <canvas id="myChart" width="150" height="150"></canvas>
+
 </div>
 
 <div class="rightSide" id="rightSideDiv">
     <h2>Query Second Location</h2>
     <input type="text" id="keywords1" />
-    <input type="button" onclick="query1();" value="Compare Forecast" />
-    <input type="button" onclick="query3();" value="Compare Current Conditions" />
+    <input type="button" onclick="query1();" value="10 Day Forecast" />
+    <input type="button" onclick="query3();" value="Current Conditions" />
 
-    <h2>Response</h2>
-    <textarea id="rawData1" rows="10" cols="50"></textarea>
 
     <h4>Results</h4>
     <br />
@@ -49,8 +50,11 @@
     <div id="results1">
 
     </div>
-    <canvas id="myChart1" width="150" height="150"></canvas>
+
 </div>
+
+<div class="middleSide" id="middleDiv"></div>
+
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 </body>
 </html>
