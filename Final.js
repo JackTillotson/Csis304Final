@@ -274,49 +274,6 @@ function query1() {
 }
 
 
-function queryCompare() {
-    if ($("#keywords").val().length > 0 && $("#keywords1").val().length > 0) {
-        //$("#results1").empty();
-        //$("#results").empty();
-        $("#middleDiv").empty();
-
-        var ctx = $("<canvas/>", {"id": "myChart2"}).width(150).height(50).appendTo("#middleDiv");
-        //var ctx = document.getElementById("myChart1");
-        var myChart2 = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: [$("#keywords").val(), $("#keywords1").val()],
-                datasets: [{
-                    label: ['Current Temperatures'],
-                    data: [globalTemp1, globalTemp2],
-                    backgroundColor: [
-                        'rgba(20, 150, 150, 0.6)',
-                        'rgba(20, 150, 150, 0.6)'
-                    ],
-                    borderColor: [
-                        'rgba(20, 200, 150, 1)',
-                        'rgba(20, 200, 150, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true,
-                            steps: 11,
-                            stepValue: 10,
-                            max: 110
-                        }
-                    }]
-                }
-            }
-        });
-    }
-}
-
 function query2() {
 
     var url = "https://query.yahooapis.com/v1/public/yql?";
@@ -390,6 +347,49 @@ function query3() {
             $("<td>").html(jsonChannel.astronomy.sunset).appendTo("#resultsTable1");
             $("<td>").html(jsonChannel.item.condition.temp).appendTo("#resultsTable1");
             $("<td>").html(jsonChannel.item.condition.text).appendTo("#resultsTable1");
+        });
+    }
+}
+
+function queryCompare() {
+    if ($("#keywords").val().length > 0 && $("#keywords1").val().length > 0) {
+        //$("#results1").empty();
+        //$("#results").empty();
+        $("#middleDiv").empty();
+
+        var ctx = $("<canvas/>", {"id": "myChart2"}).width(150).height(50).appendTo("#middleDiv");
+        //var ctx = document.getElementById("myChart1");
+        var myChart2 = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [$("#keywords").val(), $("#keywords1").val()],
+                datasets: [{
+                    label: ['Current Temperatures'],
+                    data: [globalTemp1, globalTemp2],
+                    backgroundColor: [
+                        'rgba(20, 150, 150, 0.6)',
+                        'rgba(20, 150, 150, 0.6)'
+                    ],
+                    borderColor: [
+                        'rgba(20, 200, 150, 1)',
+                        'rgba(20, 200, 150, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                            steps: 11,
+                            stepValue: 10,
+                            max: 110
+                        }
+                    }]
+                }
+            }
         });
     }
 }
