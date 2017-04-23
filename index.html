@@ -6,29 +6,31 @@
     <script type="text/javascript" src="Final.js"></script>
     <script type="text/javascript" src="toggle_visible.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.js"></script>
-    <link rel="stylesheet" href="https://s.yimg.com/zz/combo?os/yc/css/custom.44aba1a8.css&amp;os/yc/css/bundle.ce149847.css&amp;os/yc/css/atomic-desktop-ltr.c0cdb800.css&amp;os/yc/css/atomic-context.76bb529b.css&amp;os/yc/css/patch.cd698090.css&amp;os/yc/css/theme.8221cb62.css&amp;os/fuji-style/css/fuji-rollup.min.e15bf8b3.css&amp;os/yc/css/content-canvas.67e84b7e.css"/>
+    <!--<link rel="stylesheet" href="https://s.yimg.com/zz/combo?os/yc/css/custom.44aba1a8.css&amp;os/yc/css/bundle.ce149847.css&amp;os/yc/css/atomic-desktop-ltr.c0cdb800.css&amp;os/yc/css/atomic-context.76bb529b.css&amp;os/yc/css/patch.cd698090.css&amp;os/yc/css/theme.8221cb62.css&amp;os/fuji-style/css/fuji-rollup.min.e15bf8b3.css&amp;os/yc/css/content-canvas.67e84b7e.css"/> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/latest/sandstone/bootstrap.min.css" />
     <link rel="stylesheet" href="Final.css" />
 
 </head>
 <body>
 <h1>Weather Comparison
     <br />
-    <input type="button" onclick="makeVisible();" value="Compare" />
-    <input type="button" onclick="makeInvisible();" value="Hide" />
+    <input type="button" onclick="makeVisible();" value="Compare" href="#" class="btn btn-success" />
+    <input type="button" onclick="makeInvisible();" value="Hide" href="#" class="btn btn-success" />
     <br />
-    <input type="button" onclick="query2();query3();queryCompare();" value="Compare Current Temp" />
+    <br />
+    <input type="button" onclick="query2();query3();queryCompare();" value="Compare Current Temp" href="#" class="btn btn-default" />
 </h1>
 
 
 
 <div class="leftSide" id="leftSideDiv">
     <h2>Query First Location</h2>
-    <input type="text" id="keywords" />
-    <input type="button" onclick="query();" value="10 Day Forecast" />
-    <input type="button" onclick="query2();" value="Current Conditions" />
+    <input type="text" id="keywords" class="form-control" />
+    <input type="button" onclick="query();" value="10 Day Forecast" href="#" class="btn btn-success" />
+    <input type="button" onclick="query2();" value="Current Conditions" href="#" class="btn btn-success" />
 
 
-    <h3>Results</h3>
+    <h4>Results</h4>
     <br />
     <br />
     <div id="results">
@@ -39,9 +41,9 @@
 
 <div class="rightSide" id="rightSideDiv">
     <h2>Query Second Location</h2>
-    <input type="text" id="keywords1" />
-    <input type="button" onclick="query1();" value="10 Day Forecast" />
-    <input type="button" onclick="query3();" value="Current Conditions" />
+    <input type="text" id="keywords1" class="form-control" />
+    <input type="button" onclick="query1();" value="10 Day Forecast" href="#" class="btn btn-success" />
+    <input type="button" onclick="query3();" value="Current Conditions" href="#" class="btn btn-success" />
 
 
     <h4>Results</h4>

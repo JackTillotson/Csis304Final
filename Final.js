@@ -3,6 +3,8 @@
  */
 var globalTemp1;
 var globalTemp2;
+var sync1;
+var sync2;
 
 function query() {
 
@@ -286,7 +288,7 @@ function query2() {
     if (criteria.length > 0) {
         $("#results").empty();
         $("#middleDiv").empty();
-        $.getJSON(url,
+        sync1 = $.getJSON(url,
             {
                 q: query,
                 format: "json",
@@ -301,13 +303,14 @@ function query2() {
             $("#rawData").val(JSON.stringify(data));
             $("<h4>").html(jsonChannel.description).appendTo("#results");
             $("<table><tr><th>Wind Speed</th><th>Sunrise</th>" +
-                "<th>Sunset</th><th>Temperature</th><th>Conditions</th>" +
+                "<th>Sunset</th><th>Temperature</th><th>Conditions</th><th>Date & Time</th>" +
                 "</tr>").attr("id", "resultsTable").attr("class", "table table-hover").appendTo("#results");
             $("<td>").html(jsonChannel.wind.speed + " mph").appendTo("#resultsTable");
             $("<td>").html(jsonChannel.astronomy.sunrise).appendTo("#resultsTable");
             $("<td>").html(jsonChannel.astronomy.sunset).appendTo("#resultsTable");
             $("<td>").html(jsonChannel.item.condition.temp).appendTo("#resultsTable");
             $("<td>").html(jsonChannel.item.condition.text).appendTo("#resultsTable");
+            $("<td>").html(jsonChannel.item.condition.date).appendTo("#resultsTable");
         });
     }
 }
@@ -325,7 +328,7 @@ function query3() {
     if (criteria.length > 0) {
         $("#results1").empty();
         $("#middleDiv").empty();
-        $.getJSON(url,
+        sync2 = $.getJSON(url,
             {
                 q: query,
                 format: "json",
@@ -340,58 +343,61 @@ function query3() {
             $("#rawData1").val(JSON.stringify(data));
             $("<h4>").html(jsonChannel.description).appendTo("#results1");
             $("<table><tr><th>Wind Speed</th><th>Sunrise</th>" +
-                "<th>Sunset</th><th>Temperature</th><th>Conditions</th>" +
+                "<th>Sunset</th><th>Temperature</th><th>Conditions</th><th>Date & Time</th>" +
                 "</tr>").attr("id", "resultsTable1").attr("class", "table table-hover").appendTo("#results1");
             $("<td>").html(jsonChannel.wind.speed + " mph").appendTo("#resultsTable1");
             $("<td>").html(jsonChannel.astronomy.sunrise).appendTo("#resultsTable1");
             $("<td>").html(jsonChannel.astronomy.sunset).appendTo("#resultsTable1");
             $("<td>").html(jsonChannel.item.condition.temp).appendTo("#resultsTable1");
             $("<td>").html(jsonChannel.item.condition.text).appendTo("#resultsTable1");
+            $("<td>").html(jsonChannel.item.condition.date).appendTo("#resultsTable1");
         });
     }
 }
 
 function queryCompare() {
-    if ($("#keywords").val().length > 0 && $("#keywords1").val().length > 0) {
-        //$("#results1").empty();
-        //$("#results").empty();
-        $("#middleDiv").empty();
+    $.when( sync1, sync2 ).done(function () {
+        if ($("#keywords").val().length > 0 && $("#keywords1").val().length > 0) {
+            //$("#results1").empty();
+            //$("#results").empty();
+            $("#middleDiv").empty();
 
-        var ctx = $("<canvas/>", {"id": "myChart2"}).width(150).height(50).appendTo("#middleDiv");
-        //var ctx = document.getElementById("myChart1");
-        var myChart2 = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: [$("#keywords").val(), $("#keywords1").val()],
-                datasets: [{
-                    label: ['Current Temperatures'],
-                    data: [globalTemp1, globalTemp2],
-                    backgroundColor: [
-                        'rgba(20, 150, 150, 0.6)',
-                        'rgba(20, 150, 150, 0.6)'
-                    ],
-                    borderColor: [
-                        'rgba(20, 200, 150, 1)',
-                        'rgba(20, 200, 150, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true,
-                            steps: 11,
-                            stepValue: 10,
-                            max: 110
-                        }
+            var ctx = $("<canvas/>", {"id": "myChart2"}).width(150).height(50).appendTo("#middleDiv");
+            //var ctx = document.getElementById("myChart1");
+            var myChart2 = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: [$("#keywords").val(), $("#keywords1").val()],
+                    datasets: [{
+                        label: ['Current Temperatures'],
+                        data: [globalTemp1, globalTemp2],
+                        backgroundColor: [
+                            'rgba(20, 150, 150, 0.6)',
+                            'rgba(20, 150, 150, 0.6)'
+                        ],
+                        borderColor: [
+                            'rgba(20, 200, 150, 1)',
+                            'rgba(20, 200, 150, 1)'
+                        ],
+                        borderWidth: 1
                     }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+                                steps: 11,
+                                stepValue: 10,
+                                max: 110
+                            }
+                        }]
+                    }
                 }
-            }
-        });
-    }
+            });
+        }
+    })
 }
 
 

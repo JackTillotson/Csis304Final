@@ -20,11 +20,11 @@ textarea#rawData1 {
 }
 
 table, th, td {
-    border: solid 20px white;
+    border: solid 1px white;
 }
 
 table1, th, tr {
-    border: solid 10px white;
+    border: solid 1px white;
 }
 
 .middle {
